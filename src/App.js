@@ -21,7 +21,7 @@ class App extends Component {
       },
       { 
         id: 2,
-        name: '미역국',
+        name: '북어국',
         phone: '010-0000-0000',
         addr: '갈마동'
       }
