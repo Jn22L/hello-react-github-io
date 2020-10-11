@@ -11,12 +11,18 @@ class App extends Component {
         id: 0,
         name: '소고기',
         phone: '010-0000-0000',
-        addr: '갈마동'
+        addr: '월평동'
       },
       {
         id: 1,
-        name: '홍길동',
+        name: '삼겹살',
         phone: '010-0000-0001',
+        addr: '삼성동'
+      },
+      { 
+        id: 2,
+        name: '미역국',
+        phone: '010-0000-0000',
         addr: '갈마동'
       }
     ],
