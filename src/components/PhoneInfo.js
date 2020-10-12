@@ -93,11 +93,12 @@ class PhoneInfo extends Component {
     console.log('render PhoneInfo ' + this.props.info.id);
     const style = {
       border: '1px solid black',
-      padding: '8px',
-      margin: '8px'
+      padding:'0px',
+      margin: '0px'
     };
     const complete_style = {
-      textDecorationLine: 'line-through'
+      textDecorationLine: 'line-through',
+      backgroundColor: 'lightskyblue'
     };    
 
     const { editing, complete } = this.state;
