@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class PhoneInfo extends Component {
   static defaultProps = {
     info: {
-      name: '이름',
+      name: '품목',
       phone: '010-0000-0000',
       id: 0
     },
@@ -111,13 +111,15 @@ class PhoneInfo extends Component {
               name="name"
               placeholder="이름"
               onChange={this.handleChange}
-          />{'\u00A0'}
+          />{'\u00A0'}{'\u00A0'}
+          {/*
           <input 
               value={this.state.phone}
               name="phone"
               placeholder="전화번호"
               onChange={this.handleChange}
           />{'\u00A0'}
+          */}
           <button onClick={this.handleToggleEdit}>적용</button>{'\u00A0'}
           <button onClick={this.handleRemove}>삭제</button>{'\u00A0'}
           <button onClick={this.handleComplete}>완료</button>{'\u00A0'}
@@ -135,10 +137,10 @@ class PhoneInfo extends Component {
       <div style={style}>
         {complete ? 
           <span style={complete_style}>
-            {name}{'\u00A0'}{phone}{'\u00A0'}
+            {name}{'\u00A0'}{'\u00A0'}{/*phone*/}
           </span> :
           <span>
-            {name}{'\u00A0'}{phone}{'\u00A0'}
+            {name}{'\u00A0'}{'\u00A0'}{/*phone*/}
           </span>           
         }
         <button onClick={this.handleToggleEdit}>수정</button>{'\u00A0'}

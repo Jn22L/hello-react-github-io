@@ -68,13 +68,11 @@ class App extends Component {
         <PhoneForm
           onCreate={this.handleCreate}
         />
-        <p>
-          <input 
-            placeholder="검색 할 이름을 입력하세요.." 
+        <input 
+            placeholder="검색 할 품목을 입력하세요.." 
             onChange={this.handleChange}
             value={keyword}
-          />
-        </p>
+        />
         <hr />        
         <PhoneInfoList 
           data={filteredList}
