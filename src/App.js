@@ -5,7 +5,7 @@ import PhoneInfoList from './components/PhoneInfoList';
 import MyComp from './components/MyComp';
 
 class App extends Component {
-  id = 2
+  id = 3
   state = {
     information: [
       {
