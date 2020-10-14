@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PhoneForm from './components/PhoneForm';
 import PhoneInfoList from './components/PhoneInfoList';
 import MyComp from './components/MyComp';
+import MyComp2 from './components/MyComp2';
 
 class App extends Component {
   id = 3
@@ -79,9 +80,7 @@ class App extends Component {
           onRemove={this.handleRemove}
           onUpdate={this.handleUpdate}
         />
-        <MyComp
-          onCreate={this.handleCreate}
-        />
+        <MyComp/>
       </div>
     );
   }
