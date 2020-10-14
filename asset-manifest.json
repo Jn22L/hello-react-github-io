@@ -1,22 +1,19 @@
 {
   "files": {
-    "main.css": "/hello-react-github-io/static/css/main.69eda509.chunk.css",
-    "main.js": "/hello-react-github-io/static/js/main.b638b1b9.chunk.js",
-    "main.js.map": "/hello-react-github-io/static/js/main.b638b1b9.chunk.js.map",
+    "main.js": "/hello-react-github-io/static/js/main.fb5810db.chunk.js",
+    "main.js.map": "/hello-react-github-io/static/js/main.fb5810db.chunk.js.map",
     "runtime-main.js": "/hello-react-github-io/static/js/runtime-main.5cc9a1ec.js",
     "runtime-main.js.map": "/hello-react-github-io/static/js/runtime-main.5cc9a1ec.js.map",
-    "static/js/2.54dc580e.chunk.js": "/hello-react-github-io/static/js/2.54dc580e.chunk.js",
-    "static/js/2.54dc580e.chunk.js.map": "/hello-react-github-io/static/js/2.54dc580e.chunk.js.map",
+    "static/js/2.adc5c37b.chunk.js": "/hello-react-github-io/static/js/2.adc5c37b.chunk.js",
+    "static/js/2.adc5c37b.chunk.js.map": "/hello-react-github-io/static/js/2.adc5c37b.chunk.js.map",
     "index.html": "/hello-react-github-io/index.html",
-    "precache-manifest.f3147f5f6ee40f1ea41dfbf8010073cd.js": "/hello-react-github-io/precache-manifest.f3147f5f6ee40f1ea41dfbf8010073cd.js",
+    "precache-manifest.b9a9c1e0a130a4df284db02af6dca323.js": "/hello-react-github-io/precache-manifest.b9a9c1e0a130a4df284db02af6dca323.js",
     "service-worker.js": "/hello-react-github-io/service-worker.js",
-    "static/css/main.69eda509.chunk.css.map": "/hello-react-github-io/static/css/main.69eda509.chunk.css.map",
-    "static/js/2.54dc580e.chunk.js.LICENSE.txt": "/hello-react-github-io/static/js/2.54dc580e.chunk.js.LICENSE.txt"
+    "static/js/2.adc5c37b.chunk.js.LICENSE.txt": "/hello-react-github-io/static/js/2.adc5c37b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5cc9a1ec.js",
-    "static/js/2.54dc580e.chunk.js",
-    "static/css/main.69eda509.chunk.css",
-    "static/js/main.b638b1b9.chunk.js"
+    "static/js/2.adc5c37b.chunk.js",
+    "static/js/main.fb5810db.chunk.js"
   ]
 }
