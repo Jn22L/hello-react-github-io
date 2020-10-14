@@ -6,9 +6,7 @@ class MyComp extends Component {
     super(props);
     this.state = {
       isLoading: true,
-      attachFileInfo:[
-
-      ]
+      items:[]
     }
   }
 
@@ -27,27 +25,28 @@ class MyComp extends Component {
   // 비동기 get
   getHeroku = async () => {
     try {
-      const { isLoading, attachFileInfo } = this.state
+      const { isLoading, items } = this.state
       const res = await axios.get("https://jn22l.herokuapp.com/list");
       //const res = await axios.get("http://127.0.0.1:4000/list")
-      console.log('res_data', res.data.attachFileInfo)
-      this.setState({ isLoading: false, attachFileInfo: res.data.attachFileInfo })    
+      console.log('res_data', res)
+      this.setState({ isLoading: false, items: res.data })    
     } catch (error) {
       console.error(error);
     }    
   }
 
   render() {
-    const { isLoading, attachFileInfo } = this.state
+    const { isLoading, items } = this.state
     return (
       <div>
-        {isLoading ? '조회중 입니다. 잠시만 기다려 주세요 ...' 
+        {items.json}
+        {/*isLoading ? '조회중 입니다. 잠시만 기다려 주세요 ...' 
                    : attachFileInfo.map(item => (
-                        <li key={item.fileid}>
-                          {item.filename}:{item.filepath}
+                        <li key={item.json}>
+                          {item.json}:{item.json}
                         </li>
                       ))
-        }
+                   */}
       </div>
     );
   }
