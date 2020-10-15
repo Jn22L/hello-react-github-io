@@ -4,6 +4,7 @@ import PhoneForm from './components/PhoneForm';
 import PhoneInfoList from './components/PhoneInfoList';
 import MyComp from './components/MyComp';
 import MyComp2 from './components/MyComp2';
+import axios from 'axios';
 
 class App extends Component {
   id = 3
@@ -30,6 +31,33 @@ class App extends Component {
     ],
     keyword: ''
   }
+
+  handleSaveDB = ( ) => {
+    const { information } = this.state;
+    axios.post('http://localhost:4000/save', {"information" : information })
+         .then(response => {
+           console.log(response.data)
+           this.setState({ isLoading: false })
+          });    
+  }  
+
+  handleKeyClick = (redis_key) => {
+    //alert('App.js handleKeyClick=' + redis_key);
+    //axios.post('http://localhost:4000/getValue', redis_key)
+    //axios.post('http://localhost:4000/getValue', "my_sp_list_20201015")
+    axios.post('http://localhost:4000/list', "my_sp_list_20201015")
+         .then(response => {
+          console.log('handleKeyClick : ' + response.status)
+          console.log('handleKeyClick : ' + response.statusText)
+          console.log('handleKeyClick : ' + response.data )
+         // this.setState({ information: response.data})
+         })
+         .catch(err => {
+          // what now?
+          console.log('handleKeyClick : error ' + err);
+         })         
+  }    
+
   handleChange = (e) => {
     this.setState({
       keyword: e.target.value,
@@ -68,6 +96,7 @@ class App extends Component {
       <div>
         <PhoneForm
           onCreate={this.handleCreate}
+          onSaveDB={this.handleSaveDB}
         />
         <input 
             placeholder="검색 할 품목을 입력하세요.." 
@@ -80,7 +109,10 @@ class App extends Component {
           onRemove={this.handleRemove}
           onUpdate={this.handleUpdate}
         />
-        <MyComp/>
+        <MyComp
+          onKeyClick={this.handleKeyClick}
+        />
+       
       </div>
     );
   }

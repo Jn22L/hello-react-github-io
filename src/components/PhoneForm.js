@@ -22,6 +22,16 @@ class PhoneForm extends Component {
       phone: ''
     })
   }  
+  handleSaveDB = (e) => {
+    e.preventDefault();
+    this.props.onSaveDB(this.state);
+    /*
+    this.setState({
+      name: '',
+      phone: ''
+    })
+    */
+  }    
   render() {
     return (
         <form onSubmit={this.handleSubmit}>
@@ -40,6 +50,7 @@ class PhoneForm extends Component {
           /> 
           */}       
           <button type="submit">등록</button>
+          <button onClick={this.handleSaveDB}>DB저장</button>
       </form>
     );
   }

@@ -26,8 +26,8 @@ class MyComp extends Component {
   getHeroku = async () => {
     try {
       const { isLoading, items } = this.state
-      const res = await axios.get("https://jn22l.herokuapp.com/list");
-      //const res = await axios.get("http://127.0.0.1:4000/list")
+      const res = await axios.get("http://127.0.0.1:4000/getKeys")
+      //const res = await axios.get("https://jn22l.herokuapp.com/list"); 
       console.log('res_data', res)
       this.setState({ isLoading: false, items: res.data })    
     } catch (error) {
@@ -35,18 +35,30 @@ class MyComp extends Component {
     }    
   }
 
+  handleKeyClick = (e, redis_key) => {
+    e.preventDefault();
+    //alert(redis_key);
+    this.props.onKeyClick(redis_key);
+    //const { information } = this.state;
+    /*
+    this.setState({
+      information: information.concat({ id: this.id++, ...data })
+    })
+    */
+  }
+
   render() {
     const { isLoading, items } = this.state
     return (
       <div>
-        {items.json}
-        {/*isLoading ? '조회중 입니다. 잠시만 기다려 주세요 ...' 
-                   : attachFileInfo.map(item => (
-                        <li key={item.json}>
-                          {item.json}:{item.json}
+        ▶ 쇼핑 이력 
+        {isLoading ? '조회중 입니다. 잠시만 기다려 주세요 ...' 
+                   : items.map((val,idx) => (
+                        <li key={idx}>
+                          <a href="/" onClick={(e)=>this.handleKeyClick(e,val)} data-DBKey={val}>{val}</a>
                         </li>
                       ))
-                   */}
+        }
       </div>
     );
   }
