@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class PhoneInfo extends Component {
   static defaultProps = {
     info: {
-      name: '품목',
+      name: '이름',
       phone: '010-0000-0000',
       id: 0
     },
@@ -18,19 +18,16 @@ class PhoneInfo extends Component {
     // 설정합니다
     name: '',
     phone: '',
-    complete: false
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     console.log('shouldComponentUpdate PhoneInfo');
     // 수정 상태가 아니고, info 값이 같다면 리렌더링 안함
-    /* complete 추가하면서 주석처리 ( 그냥 모두 렌더링 - 스터디 차원)
     if (!this.state.editing  
         && !nextState.editing
         && nextProps.info === this.props.info) {
       return false;
     }
-    */
     // 나머지 경우엔 리렌더링함
     return true;
   }
@@ -47,13 +44,6 @@ class PhoneInfo extends Component {
     const { editing } = this.state;
     this.setState({ editing: !editing });
   }
-
-  // 완료버튼처리
-  handleComplete = () => {
-    console.log('handleComplete')
-    const { complete } = this.state;
-    this.setState({ complete: !complete });
-  }  
 
   // input 에서 onChange 이벤트가 발생 될 때
   // 호출되는 함수입니다
@@ -93,36 +83,33 @@ class PhoneInfo extends Component {
     console.log('render PhoneInfo ' + this.props.info.id);
     const style = {
       border: '1px solid black',
-      padding:'0px',
-      margin: '0px'
+      padding: '8px',
+      margin: '8px'
     };
-    const complete_style = {
-      textDecorationLine: 'line-through',
-      backgroundColor: 'lightskyblue'
-    };    
 
-    const { editing, complete } = this.state;
+    const { editing } = this.state;
     
     if (editing) { // 수정모드
       return (
         <div style={style}>
-          <input 
+          <div>
+            <input
               value={this.state.name}
               name="name"
               placeholder="이름"
               onChange={this.handleChange}
-          />{'\u00A0'}{'\u00A0'}
-          {/*
-          <input 
+            />
+          </div>
+          <div>
+            <input
               value={this.state.phone}
               name="phone"
               placeholder="전화번호"
               onChange={this.handleChange}
-          />{'\u00A0'}
-          */}
-          <button onClick={this.handleToggleEdit}>적용</button>{'\u00A0'}
-          <button onClick={this.handleRemove}>삭제</button>{'\u00A0'}
-          <button onClick={this.handleComplete}>완료</button>{'\u00A0'}
+            />
+          </div>
+          <button onClick={this.handleToggleEdit}>적용</button>
+          <button onClick={this.handleRemove}>삭제</button>
         </div>
       );
     }
@@ -135,17 +122,10 @@ class PhoneInfo extends Component {
     
     return (
       <div style={style}>
-        {complete ? 
-          <span style={complete_style}>
-            {name}{'\u00A0'}{'\u00A0'}{/*phone*/}
-          </span> :
-          <span>
-            {name}{'\u00A0'}{'\u00A0'}{/*phone*/}
-          </span>           
-        }
-        <button onClick={this.handleToggleEdit}>수정</button>{'\u00A0'}
-        <button onClick={this.handleRemove}>삭제</button>{'\u00A0'}
-        <button onClick={this.handleComplete}>완료</button>{'\u00A0'}
+        <div><b>{name}</b></div>
+        <div>{phone}</div>
+        <button onClick={this.handleToggleEdit}>수정</button>
+        <button onClick={this.handleRemove}>삭제</button>
       </div>
     );
   }

@@ -1,83 +1,61 @@
 // file: src/App.js
 import React, { Component } from 'react';
+import axios from 'axios';
 import PhoneForm from './components/PhoneForm';
 import PhoneInfoList from './components/PhoneInfoList';
-import MyComp from './components/MyComp';
-import MyComp2 from './components/MyComp2';
-import axios from 'axios';
-import { findAllByDisplayValue } from '@testing-library/react';
+import MyDBList from './components/MyDBList';
+
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-      this.id = 3
-      this.state = {
-        id: 3,
-        loading: false,
-        information: [
-          {
-            id: 0,
-            name: '소고기',
-            phone: '010-0000-0000'
-          },
-          {
-            id: 1,
-            name: '삼겹살',
-            phone: '010-0000-0001'
-          },
-          { 
-            id: 2,
-            name: '북어국',
-            phone: '010-0000-0000'
-          }
-        ],
-        keyword: ''
+  id = 2
+  state = {
+    information: [
+      {
+        id: 0,
+        name: '품목1',
+        phone: '010-0000-0000'
+      },
+      {
+        id: 1,
+        name: '품목2',
+        phone: '010-0000-0001'
       }
-  }
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('App.js shouldComponentUpdate');
-    // 수정 상태가 아니고, info 값이 같다면 리렌더링 안함
-    /* complete 추가하면서 주석처리 ( 그냥 모두 렌더링 - 스터디 차원)
-    if (!this.state.editing  
-        && !nextState.editing
-        && nextProps.info === this.props.info) {
-      return false;
-    }
-    */
-    // 나머지 경우엔 리렌더링함
-    return true;
+    ],
+    keyword: '',
+    my_key_list: []
   }
 
-  /*
   componentDidMount() {
-    axios.post(`http://localhost:4000/getValue?`, "my_sp_list_20201015")
-         .then(res => {
-           //const hello_heroku = res.data;
-           console.log('App.js componentDidMount===>',res.data);
-           //this.setState({ hello_heroku });
-      })
-
+    this.getHeroku(); 
   }
-  */
-
-  handleSaveDB = ( ) => {
-    const { information } = this.state;
-    //axios.post('http://localhost:4000/save', {"information" : information })
-    axios.post('https://jn22l.herokuapp.com/save', {"information" : information })
-         .then(response => {
-           console.log(response.data)
-           //this.setState({ information: response.data })
-          });    
-  }  
+  
+  getHeroku = async () => {
+    axios.get("https://jn22l.herokuapp.com/getKeys")    
+    .then((res) => { 
+      if(res.status === 200){  
+        console.log('getHeroku : res_data', res)
+        this.setState({ isLoading: false, my_key_list: res.data })  
+      }    
+      console.log('getHeroku~: res_data', res)
+    })
+    .catch((error) => {
+      console.error('getHeroku error',error)
+    })
+  }
 
   handleKeyClick = (redis_key) => {
     //axios.post('http://localhost:4000/getValue', redis_key)
     //axios.post(`http://localhost:4000/getValue?key=${redis_key}`)
     axios.post('https://jn22l.herokuapp.com/getValue', redis_key)    
       .then((res) => { 
-        if(res.status == 200){  
-            console.log(res.data)
+        if(res.status === 200){  
+            console.log('handleKeyClick',res.data.information)
             this.setState({ isLoading: false, information: res.data.information })
+            if(res.data.information.length !== 0) {
+              this.id = res.data.information[res.data.information.length-1].id+1 //max id 세팅
+            } else {
+              this.id = 0
+            }
         }    
       })
       .catch((error) => {
@@ -85,6 +63,16 @@ class App extends Component {
       })  
     console.log("handleKeyClick 끝")
   }
+
+  handleSaveDB = ( ) => {
+    const { information } = this.state;
+    //axios.post('http://localhost:4000/save', {"information" : information })
+    axios.post('https://jn22l.herokuapp.com/save', {"information" : information })
+         .then(response => {
+            console.log(response.data)
+           //this.setState({ information: response.data })
+          });    
+  }  
 
   handleChange = (e) => {
     this.setState({
@@ -115,7 +103,7 @@ class App extends Component {
   }  
   render() {
     console.log('render App');
-    const { information, keyword } = this.state;
+    const { information, keyword, my_key_list } = this.state;
     const filteredList = information.filter(
       info => info.name.indexOf(keyword) !== -1
       
@@ -126,21 +114,23 @@ class App extends Component {
           onCreate={this.handleCreate}
           onSaveDB={this.handleSaveDB}
         />
-        <input 
-            placeholder="검색 할 품목을 입력하세요.." 
+        <p>
+          <input 
+            placeholder="검색 할 이름을 입력하세요.." 
             onChange={this.handleChange}
             value={keyword}
-        />
+          />
+        </p>
         <hr />        
         <PhoneInfoList 
           data={filteredList}
           onRemove={this.handleRemove}
           onUpdate={this.handleUpdate}
-        />
-        <MyComp
+        />    
+        <MyDBList
+          data={my_key_list}
           onKeyClick={this.handleKeyClick}
-        />
-       
+        />            
       </div>
     );
   }

@@ -25,30 +25,22 @@ class PhoneForm extends Component {
   handleSaveDB = (e) => {
     e.preventDefault();
     this.props.onSaveDB(this.state);
-    /*
-    this.setState({
-      name: '',
-      phone: ''
-    })
-    */
-  }    
+  }      
   render() {
     return (
         <form onSubmit={this.handleSubmit}>
           <input
-            placeholder="품목"
+            placeholder="이름"
             value={this.state.name}
             onChange={this.handleChange}
             name="name"          
           />
-          {/*
           <input
             placeholder="전화번호"
             value={this.state.phone}
             onChange={this.handleChange}
             name="phone"
-          /> 
-          */}       
+          />        
           <button type="submit">등록</button>
           <button onClick={this.handleSaveDB}>DB저장</button>
       </form>
