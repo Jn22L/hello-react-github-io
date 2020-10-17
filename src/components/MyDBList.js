@@ -43,8 +43,8 @@ class MyDBList extends Component {
     let ht = new Date(yyyy, mm, dd, hh24, mi, ss) 
     ht.setHours(ht.getHours() + 9);
     
-    return ht.getFullYear() + '/' + ('0' + (ht.getMonth()+1)).slice(-2) + '/' + ht.getDate() + '(' + week[ht.getDay()] + ')'
-           + ht.getHours() + ':'  + ('0' + ht.getMinutes()).slice(-2) + ':'  + ht.getSeconds()
+    return ht.getFullYear() + '/' + ('0' + (ht.getMonth()+1)).slice(-2) + '/' + ('0' + ht.getDate()).slice(-2) + '(' + week[ht.getDay()] + ')'
+           + ('0' + ht.getHours()).slice(-2) + ':'  + ('0' + ht.getMinutes()).slice(-2) + ':' + ('0' + ht.getSeconds()).slice(-2)
   }
 
 
@@ -60,7 +60,7 @@ class MyDBList extends Component {
               <a href="/" 
                  onClick={(e)=>this.handleKeyClick(e,val)} 
                  data-dbkey={val}>
-                  {this.getLocalTime(val)}
+                  {this.getLocalTime(val)+' '+val.substring(28)}
               </a>
               {isMaster?<button onClick={(e)=>this.handleDelete(e,val)}>삭제</button>:<div></div>}
             </li>
