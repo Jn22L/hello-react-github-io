@@ -32,15 +32,19 @@ class MyDBList extends Component {
   }
 
   getLocalTime = (heroku_time_str) => {
+    let week = ["일", "월", "화", "수", "목", "금", "토"];
+
     let yyyy = heroku_time_str.substring(11,15)  
     let mm = heroku_time_str.substring(15,17) - 1
     let dd = heroku_time_str.substring(17,19) 
     let hh24 = heroku_time_str.substring(20,22)
     let mi = heroku_time_str.substring(23,25) 
     let ss = heroku_time_str.substring(26,28)
-    let heroku_time = new Date(yyyy, mm, dd, hh24, mi, ss) 
-    heroku_time.setHours(heroku_time.getHours() + 9);
-    return heroku_time.toLocaleString()
+    let ht = new Date(yyyy, mm, dd, hh24, mi, ss) 
+    ht.setHours(ht.getHours() + 9);
+    
+    return ht.getFullYear() + '/' + ('0' + ht.getMonth()).slice(-2) + '/' + ht.getDate() + '(' + week[ht.getDay()] + ')'
+           + ht.getHours() + ':'  + ('0' + ht.getMinutes()).slice(-2) + ':'  + ht.getSeconds()
   }
 
 
