@@ -1,4 +1,7 @@
-react 스터디 ( 서버 : heroku python flask, DB : redis )
+react 스터디 차원에서 만들어봄
+* client : react
+* server : python flask <https://github.com/Jn22L/hello_python_flask_redis>
+* DB : redis
 
 ## 심심할때 할것
 * [완료]버튼 추가 : 색상바꾸기
