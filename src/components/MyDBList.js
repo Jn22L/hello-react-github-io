@@ -6,7 +6,6 @@ class MyDBList extends Component {
     this.canDeleteCount = 0
     this.state = {
       isMaster: false,
-      isLoading: true,
       items:[]
     }
   }
@@ -34,12 +33,13 @@ class MyDBList extends Component {
 
   render() {
     console.log("MyComp.render()")
-    const { isLoading, items, isMaster } = this.state
-    const { data } = this.props
+    const { items, isMaster } = this.state
+    const { isLoading, data } = this.props
     return (
       <div>
         <div onDoubleClick={(e)=>this.handleDoubleClick(e)} >▶ 쇼핑 이력 </div>
-        { data.map((val,idx) => (
+        {isLoading?'쇼핑이력 조회중 입니다 ...':
+          data.map((val,idx) => (
             <li key={idx}>
               <a href="/" 
                  onClick={(e)=>this.handleKeyClick(e,val)} 

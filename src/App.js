@@ -21,7 +21,8 @@ class App extends Component {
       }
     ],
     keyword: '',
-    my_key_list: []
+    my_key_list: [],
+    isLoading: true
   }
 
   componentDidMount() {
@@ -122,7 +123,7 @@ class App extends Component {
   }  
   render() {
     console.log('render App');
-    const { information, keyword, my_key_list } = this.state;
+    const { information, keyword, my_key_list, isLoading } = this.state;
     const filteredList = information.filter(
       info => info.name.indexOf(keyword) !== -1
       
@@ -150,6 +151,7 @@ class App extends Component {
           data={my_key_list}
           onKeyClick={this.handleKeyClick}
           onDeleteClick={this.handleDelete}
+          isLoading={isLoading}
         />      
       </div>
     );
