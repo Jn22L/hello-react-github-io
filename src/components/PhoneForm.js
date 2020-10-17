@@ -33,17 +33,17 @@ class PhoneForm extends Component {
     return (
         <form onSubmit={this.handleSubmit}>
           <input
-            placeholder="이름"
+            placeholder="품목"
             value={this.state.name}
             onChange={this.handleChange}
             name="name"          
           />
-          <input
+          {/*<input
             placeholder="전화번호"
             value={this.state.phone}
             onChange={this.handleChange}
             name="phone"
-          />        
+          />*/}        
           <button type="submit">등록</button>
           {name !== 'iloveu'?<div></div>:
           <button onClick={this.handleSaveDB}>DB저장</button>

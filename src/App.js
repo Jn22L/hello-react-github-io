@@ -134,13 +134,11 @@ class App extends Component {
           onCreate={this.handleCreate}
           onSaveDB={this.handleSaveDB}
         />
-        <p>
-          <input 
+        {/*<input 
             placeholder="검색 할 이름을 입력하세요.." 
             onChange={this.handleChange}
             value={keyword}
-          />
-        </p>
+        />*/}
         <hr />        
         <PhoneInfoList 
           data={filteredList}

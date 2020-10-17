@@ -5,8 +5,7 @@ class MyDBList extends Component {
     super(props);
     this.canDeleteCount = 0
     this.state = {
-      isMaster: false,
-      items:[]
+      isMaster: false
     }
   }
 
@@ -49,7 +48,7 @@ class MyDBList extends Component {
 
 
   render() {
-    const { items, isMaster } = this.state
+    const { isMaster } = this.state
     const { isLoading, data } = this.props
     return (
       <div>

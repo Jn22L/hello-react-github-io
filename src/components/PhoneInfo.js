@@ -18,6 +18,7 @@ class PhoneInfo extends Component {
     // 설정합니다
     name: '',
     phone: '',
+    buyComplete: false
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -26,6 +27,10 @@ class PhoneInfo extends Component {
     if (!this.state.editing  
         && !nextState.editing
         && nextProps.info === this.props.info) {
+      // 완료 클릭시 리렌더링
+      if(this.state.buyComplete !== nextState.buyComplete) {
+        return true
+      }
       return false;
     }
     // 나머지 경우엔 리렌더링함
@@ -52,6 +57,13 @@ class PhoneInfo extends Component {
     this.setState({
       [name]: value
     });
+  }
+
+  // 완료버튼 클릭시
+  handleBuyComplete = (e) => {
+    //const { info, onRemove } = this.props;
+    //onRemove(info.id);
+    this.setState({ buyComplete: !this.state.buyComplete });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -83,9 +95,13 @@ class PhoneInfo extends Component {
     console.log('render PhoneInfo ' + this.props.info.id);
     const style = {
       border: '1px solid black',
-      padding: '8px',
-      margin: '8px'
+      padding: '1px',
+      margin: '1px'
     };
+    const buy_complete = {
+      textDecorationLine: 'line-through',
+      backgroundColor: 'yellow'
+    };    
 
     const { editing } = this.state;
     
@@ -100,14 +116,14 @@ class PhoneInfo extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <div>
+          {/*<div>
             <input
               value={this.state.phone}
               name="phone"
               placeholder="전화번호"
               onChange={this.handleChange}
             />
-          </div>
+          </div>*/}
           <button onClick={this.handleToggleEdit}>적용</button>
           <button onClick={this.handleRemove}>삭제</button>
         </div>
@@ -116,16 +132,23 @@ class PhoneInfo extends Component {
 
 
     // 일반모드
-    const {
-      name, phone
-    } = this.props.info;
+    const { name } = this.props.info
+    const { buyComplete } = this.state 
     
     return (
       <div style={style}>
-        <div><b>{name}</b></div>
-        <div>{phone}</div>
-        <button onClick={this.handleToggleEdit}>수정</button>
-        <button onClick={this.handleRemove}>삭제</button>
+        <div><b>{buyComplete?<div style={buy_complete}>{name}</div>:name}</b></div>
+        {buyComplete ?
+          <div>
+            <button onClick={this.handleBuyComplete}>취소</button>
+          </div>
+          :
+          <div>
+            <button onClick={this.handleToggleEdit}>수정</button>
+            <button onClick={this.handleRemove}>삭제</button>
+            <button onClick={this.handleBuyComplete}>완료</button>
+          </div>
+        }
       </div>
     );
   }
