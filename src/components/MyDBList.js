@@ -32,7 +32,6 @@ class MyDBList extends Component {
   }
 
   render() {
-    console.log("MyComp.render()")
     const { items, isMaster } = this.state
     const { isLoading, data } = this.props
     return (

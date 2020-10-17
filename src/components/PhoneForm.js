@@ -24,15 +24,12 @@ class PhoneForm extends Component {
   }  
   handleSaveDB = (e) => {
     e.preventDefault()
-    if(this.state.name !== 'masteronly'){
-      alert('관리자만 저장가능합니다.')
-      return
-    }
     if(window.confirm('저장할까요?')){
         this.props.onSaveDB(this.state)      
     }
   }      
   render() {
+    const { name } = this.state
     return (
         <form onSubmit={this.handleSubmit}>
           <input
@@ -48,7 +45,9 @@ class PhoneForm extends Component {
             name="phone"
           />        
           <button type="submit">등록</button>
+          {name !== 'iloveu'?<div></div>:
           <button onClick={this.handleSaveDB}>DB저장</button>
+          }
       </form>
     );
   }
