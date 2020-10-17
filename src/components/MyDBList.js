@@ -43,7 +43,7 @@ class MyDBList extends Component {
     let ht = new Date(yyyy, mm, dd, hh24, mi, ss) 
     ht.setHours(ht.getHours() + 9);
     
-    return ht.getFullYear() + '/' + ('0' + ht.getMonth()+1).slice(-2) + '/' + ht.getDate() + '(' + week[ht.getDay()] + ')'
+    return ht.getFullYear() + '/' + ('0' + (ht.getMonth()+1)).slice(-2) + '/' + ht.getDate() + '(' + week[ht.getDay()] + ')'
            + ht.getHours() + ':'  + ('0' + ht.getMinutes()).slice(-2) + ':'  + ht.getSeconds()
   }
 
