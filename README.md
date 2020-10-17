@@ -6,5 +6,5 @@ react - flask - redis 로 만들어봄.
 
 
 ## 참조
-생활코딩 react: <https://egoing.github.io/react-tutorial-example/>
+생활코딩 react: <https://egoing.github.io/react-tutorial-example/>  
 velopert react: <https://velopert.com/reactjs-tutorials>
