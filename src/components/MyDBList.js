@@ -31,6 +31,19 @@ class MyDBList extends Component {
     }
   }
 
+  getLocalTime = (heroku_time_str) => {
+    let yyyy = heroku_time_str.substring(11,15)  
+    let mm = heroku_time_str.substring(15,17) - 1
+    let dd = heroku_time_str.substring(17,19) 
+    let hh24 = heroku_time_str.substring(20,22)
+    let mi = heroku_time_str.substring(23,25) 
+    let ss = heroku_time_str.substring(26,28)
+    let heroku_time = new Date(yyyy, mm, dd, hh24, mi, ss) 
+    heroku_time.setHours(heroku_time.getHours() + 9);
+    return heroku_time.toLocaleString()
+  }
+
+
   render() {
     const { items, isMaster } = this.state
     const { isLoading, data } = this.props
@@ -42,7 +55,8 @@ class MyDBList extends Component {
             <li key={idx}>
               <a href="/" 
                  onClick={(e)=>this.handleKeyClick(e,val)} 
-                 data-dbkey={val}>{val}
+                 data-dbkey={val}>
+                  {this.getLocalTime(val)}
               </a>
               {isMaster?<button onClick={(e)=>this.handleDelete(e,val)}>삭제</button>:<div></div>}
             </li>
