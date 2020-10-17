@@ -99,7 +99,7 @@ class PhoneInfo extends Component {
       margin: '1px'
     };
     const buy_complete = {
-      textDecorationLine: 'line-through',
+      // textDecorationLine: 'line-through',
       backgroundColor: 'yellow'
     };    
 
