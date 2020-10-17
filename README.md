@@ -1,4 +1,4 @@
-react - flask - redis 로 만들어봄.
+react 스터디 ( 서버 : heroku python flask, DB : redis )
 
 ## 심심할때 할것
 * [완료]버튼 추가 : 색상바꾸기
