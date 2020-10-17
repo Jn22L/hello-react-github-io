@@ -29,8 +29,8 @@ class App extends Component {
   }
   
   getHistory = async () => {
-    axios.get("http://localhost:4000/getKeys")    
-    //axios.get("https://jn22l.herokuapp.com/getKeys")    
+    //axios.get("http://localhost:4000/getKeys")    
+    axios.get("https://jn22l.herokuapp.com/getKeys")    
     .then((res) => { 
       if(res.status === 200){  
         console.log('getHeroku : res_data', res)
@@ -44,8 +44,8 @@ class App extends Component {
   }
 
   handleKeyClick = (redis_key) => {
-    axios.post('http://localhost:4000/getValue', redis_key)
-    //axios.post('https://jn22l.herokuapp.com/getValue', redis_key)    
+    //axios.post('http://localhost:4000/getValue', redis_key)
+    axios.post('https://jn22l.herokuapp.com/getValue', redis_key)    
       .then((res) => { 
         if(res.status === 200){  
             console.log('handleKeyClick',res.data.information)
@@ -65,8 +65,8 @@ class App extends Component {
 
   handleSaveDB = ( ) => {
     const { information } = this.state;
-    axios.post('http://localhost:4000/save', {"information" : information })
-    //axios.post('https://jn22l.herokuapp.com/save', {"information" : information })
+    //axios.post('http://localhost:4000/save', {"information" : information })
+    axios.post('https://jn22l.herokuapp.com/save', {"information" : information })
          .then(response => {
             console.log(response.data)
             this.getHistory(); // 목록 조회
@@ -74,8 +74,8 @@ class App extends Component {
   }  
 
   handleDelete = (redis_key) => {
-    axios.post('http://localhost:4000/delKey', redis_key)
-    //axios.post('https://jn22l.herokuapp.com/delKey', redis_key)    
+    //axios.post('http://localhost:4000/delKey', redis_key)
+    axios.post('https://jn22l.herokuapp.com/delKey', redis_key)    
       .then((res) => { 
         if(res.status === 200){  
             console.log('handleDeleteDB',res)
