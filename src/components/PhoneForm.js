@@ -23,8 +23,14 @@ class PhoneForm extends Component {
     })
   }  
   handleSaveDB = (e) => {
-    e.preventDefault();
-    this.props.onSaveDB(this.state);
+    e.preventDefault()
+    if(this.state.name !== 'masteronly'){
+      alert('관리자만 저장가능합니다.')
+      return
+    }
+    if(window.confirm('저장할까요?')){
+        this.props.onSaveDB(this.state)      
+    }
   }      
   render() {
     return (
