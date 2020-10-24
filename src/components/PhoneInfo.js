@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button'; 
+import TextField from "@material-ui/core/TextField";
 
 class PhoneInfo extends Component {
   static defaultProps = {
@@ -109,12 +111,11 @@ class PhoneInfo extends Component {
       return (
         <div style={style}>
           <div>
-            <input
-              value={this.state.name}
-              name="name"
-              placeholder="이름"
-              onChange={this.handleChange}
-            />
+            <TextField id="outlined-basic" label="이름" variant="outlined"  size="small"  
+                     value={this.state.name}   
+                     onChange={this.handleChange} 
+                     name="name"       
+            />            
           </div>
           {/*<div>
             <input
@@ -124,8 +125,8 @@ class PhoneInfo extends Component {
               onChange={this.handleChange}
             />
           </div>*/}
-          <button onClick={this.handleToggleEdit}>적용</button>
-          <button onClick={this.handleRemove}>삭제</button>
+          <Button onClick={this.handleToggleEdit} variant="contained" color="primary" size="small">적용</Button>   
+          <Button onClick={this.handleRemove} variant="contained" color="primary" size="small">삭제</Button>   
         </div>
       );
     }
@@ -139,15 +140,23 @@ class PhoneInfo extends Component {
       <div style={style}>
         <div><b>{buyComplete?<div style={buy_complete}>{name}</div>:name}</b></div>
         {buyComplete ?
+          // <div>
+          //   <button onClick={this.handleBuyComplete}>취소</button>
+          // </div>
           <div>
-            <button onClick={this.handleBuyComplete}>취소</button>
-          </div>
+            <Button onClick={this.handleBuyComplete} variant="contained" color="secondary" size="small">취소</Button>            
+          </div>          
           :
+          // <div>
+          //   <button onClick={this.handleToggleEdit}>수정</button>
+          //   <button onClick={this.handleRemove}>삭제</button>
+          //   <button onClick={this.handleBuyComplete}>완료</button>
+          // </div>
           <div>
-            <button onClick={this.handleToggleEdit}>수정</button>
-            <button onClick={this.handleRemove}>삭제</button>
-            <button onClick={this.handleBuyComplete}>완료</button>
-          </div>
+            <Button onClick={this.handleToggleEdit} variant="contained" color="primary" size="small">수정</Button>            
+            <Button onClick={this.handleRemove} variant="contained" color="primary" size="small">삭제</Button>            
+            <Button onClick={this.handleBuyComplete} variant="contained" color="secondary" size="small">완료</Button>            
+        </div>          
         }
       </div>
     );

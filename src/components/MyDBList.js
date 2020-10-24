@@ -46,7 +46,6 @@ class MyDBList extends Component {
            + ('0' + ht.getHours()).slice(-2) + ':'  + ('0' + ht.getMinutes()).slice(-2) + ':' + ('0' + ht.getSeconds()).slice(-2)
   }
 
-
   render() {
     const { isMaster } = this.state
     const { isLoading, data } = this.props
@@ -61,7 +60,7 @@ class MyDBList extends Component {
                  data-dbkey={val}>
                   {this.getLocalTime(val)+' '+val.substring(28)}
               </a>
-              {isMaster?<button onClick={(e)=>this.handleDelete(e,val)}>삭제</button>:<div></div>}
+              {isMaster?<button onClick={(e)=>this.handleDelete(e,val)}>삭제</button>:null}
             </li>
           ))
         }
