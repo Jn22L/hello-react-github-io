@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button'; 
 import TextField from "@material-ui/core/TextField";
+import Grid from '@material-ui/core/Grid';
 
 class PhoneInfo extends Component {
   static defaultProps = {
@@ -153,10 +154,10 @@ class PhoneInfo extends Component {
           //   <button onClick={this.handleBuyComplete}>완료</button>
           // </div>
           <div>
-            <Button onClick={this.handleToggleEdit} variant="contained" color="primary" size="small">수정</Button>            
-            <Button onClick={this.handleRemove} variant="contained" color="primary" size="small">삭제</Button>            
-            <Button onClick={this.handleBuyComplete} variant="contained" color="secondary" size="small">완료</Button>            
-        </div>          
+            <Button onClick={this.handleToggleEdit}  variant="contained" size="small">수정</Button>           
+            <Button onClick={this.handleRemove}      variant="contained" size="small">삭제</Button>            
+            <Button onClick={this.handleBuyComplete} variant="contained" color="secondary" size="small">완료</Button> 
+          </div>          
         }
       </div>
     );
