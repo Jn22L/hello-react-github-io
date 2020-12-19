@@ -1,6 +1,6 @@
 react 스터디 차원에서 만들어봄
-* client : react
-* server : python flask <https://github.com/Jn22L/hello_python_flask_redis>
+* frontend : react
+* backend  : python flask <https://github.com/Jn22L/hello_python_flask_redis>
 * DB : redis
 
 ## 심심할때 할것
